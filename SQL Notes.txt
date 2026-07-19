@@ -1,0 +1,2083 @@
+SQL:
+
+Database:
+                                 A database is a place where data is stored in an organized way so it can be easily searched, updated, and managed.
+
+Example: Imagine a school register.This register is like a database because it stores related information in an organized format.
+
+In SQL, we create a database like this:
+                                                       CREATE DATABASE School;
+                                                       CREATE DATABASE startersql;
+
+
+Query:
+                            A query is a command or request used to get, add, update, or delete data in a database.
+In one line:
+                   A query is an instruction given to a database to perform a task.
+
+Example:                 SELECT * FROM Students;  ( This is the Query).
+
+
+CRUD:
+CRUD stands for:
+C – Create (Add new data)
+R – Read (View or retrieve data)
+U – Update (Modify existing data)
+D – Delete (Remove data)
+
+DBMS:
+                          DBMS stands for Database Management System.
+
+Simple Definition:
+                            A DBMS is software that helps you create, store, organize, retrieve, and manage data in a database.
+
+Examples of DBMS:
+MySQL
+Oracle
+Microsoft SQL Server
+PostgreSQL
+SQLite
+
+In one line:             DBMS is software used to manage databases.
+
+
+
+RDBMS:
+                              RDBMS stands for Relational Database Management System.
+
+Simple Definition:
+                            An RDBMS is a type of DBMS that stores data in tables (rows and columns) and connects those tables using relationships.
+
+Simple Example:
+Students Table
+
+StudentID	Name
+1	                  Ali
+2	                 Sara
+
+Courses Table
+
+StudentID	Course
+1	                  SQL
+2	                 Python
+
+Both tables are connected by StudentID.
+
+In one line:             An RDBMS is software that stores data in related tables and manages the relationships between them.
+
+Examples: MySQL, PostgreSQL, Oracle, Microsoft SQL Server.
+
+
+
+
+Non-Relational Database Managment System:
+                                    Non-Relational Database Management System (NoSQL DBMS) is a type of database that does not store data in related tables. Instead, it stores data in formats like documents, key-value pairs, graphs, or columns.
+
+Simple Definition:
+                      A Non-Relational DBMS stores data without using tables and relationships.
+
+Simple Example:
+
+Instead of a table, it can store data like this:
+
+{
+  "Name": "Ali",
+  "Age": 20,
+  "Course": "SQL"
+}
+
+In one line:            A Non-Relational DBMS stores data in flexible formats instead of related tables.
+Examples: MongoDB, Cassandra, Redis, CouchDB.
+
+
+
+Table (in a Database)
+                                             A table is a collection of related data organized into rows and columns.
+Simple Example:
+StudentID	Name	Class
+101	                   Ali	10th
+102	                   Sara	9th
+
+Columns = Types of information (StudentID, Name, Class)
+Rows = Individual records (each student's data)
+
+In one line:              A table is where data is stored in rows and columns inside a database.
+
+
+Create Table In SQL: 
+  
+  CREATE TABLE user (
+  	ID int auto_increment primary key,
+  	name varchar(100) not null,
+  	email varchar(100) unique not null,
+  	gender ENUM( 'Male', 'Female', 'Other'),
+  	date_of_birth date,
+  	Create_at timestamp default current_timestamp
+  );
+  
+TO show table use this  Query:                            SELECT * FROM user;
+
+
+DROP DATABASE:
+                                            DROP DATABASE is an SQL command used to permanently delete a database and all the data inside it.
+In one line:                 DROP DATABASE deletes an entire database permanently.
+
+Example:
+                  DROP DATABASE School;
+This command permanently deletes the School database and all of its tables and data. ⚠️ It cannot be undone.
+
+
+Data Type (in SQL)
+                                            A data type defines what kind of data a column can store.
+Here are the most commonly used SQL data types that every beginner should know:
+
+Data Type         	                  Used For            	                                        Example
+INT	                                        Whole numbers	                                          25, 100
+VARCHAR(n)	                   Text (variable length)	                                      "Ali", "Lahore"
+CHAR(n)	                             Fixed-length text	                                          "A", "PK"
+FLOAT	                             Decimal numbers	                                      99.5, 3.14
+DECIMAL(p,s)	             Exact decimal values (money, prices)	                1500.75
+DATE	                                Date only	                                                      2026-07-12
+TIME	                                Time only	                                                         14:30:00
+DATETIME	                       Date and time	                                        2026-07-12 14:30:00
+BOOLEAN                      	True/False value                                         TRUE, FALSE
+TEXT	                                  Long text	                                      Paragraphs, descriptions
+
+The 5 most important data types for beginners:
+INT → Whole numbers
+VARCHAR(n) → Text
+FLOAT → Decimal numbers
+DATE → Dates
+DATETIME → Date and time
+
+In one line:             SQL data types define what kind of data (number, text, date, etc.) can be stored in a column.
+
+
+
+ENUM (Enumeration) Datatype:
+                                 ENUM is a data type that allows a column to store only one value from a predefined list.
+Example (Gender):
+                        Gender ENUM('Male', 'Female', 'Other')
+Now the Gender column can only store:
+Male
+Female
+Other
+
+No other value is allowed.
+
+In one line:          ENUM is a data type that restricts a column to a fixed list of allowed values.
+
+This is commonly used for fields like:
+Gender
+Order Status (Pending, Shipped, Delivered)
+Payment Method (Cash, Card, Online)
+
+
+
+TIMESTAMP (in SQL-Datatype)
+                                                      A TIMESTAMP data type stores the date and time of an event.
+Why do we use TIMESTAMP?
+                                       We use TIMESTAMP to keep track of when a record was created or last updated.
+Example:
+If a new student is added on 12 July 2026 at 3:30 PM, the timestamp will store:
+                                   2026-07-12 15:30:00
+
+In one line:        TIMESTAMP stores the exact date and time when an event happens.
+Common Uses:
+Record creation time
+Last updated time
+Login time
+Order time
+Payment time
+
+
+
+
+
+Constraints (in SQL)
+                           Constraints are rules applied to columns to ensure the data stored in a table is accurate, valid, and consistent.
+In one line:       Constraints are rules that control what data can be stored in a table.
+
+Most Common SQL Constraints:
+Constraint	                                                                                                              Purpose
+NOT NULL	                                                                                        A column cannot have an empty (NULL) value.
+UNIQUE	                                                                                                All values in the column must be different.
+PRIMARY KEY	                                                                               Uniquely identifies each row. It cannot be NULL or duplicate.
+FOREIGN KEY	                                                                                Connects one table to another and maintains relationships.
+DEFAULT	                                                                                        Assigns a default value if no value is provided.
+CHECK	                                                                                                Allows only values that satisfy a condition.
+AUTO_INCREMENT (MySQL)	                                                        Automatically generates the next number for an ID column.
+
+Simple Examples:
+NOT NULL → Name must always be entered.
+UNIQUE → Email must be different for every user.
+PRIMARY KEY → StudentID uniquely identifies each student.
+FOREIGN KEY → Links StudentID in one table to another table.
+DEFAULT → Default country = "Pakistan".
+CHECK → Age must be at least 18.
+AUTO_INCREMENT → IDs are generated automatically: 1, 2, 3, ...
+
+These are the constraints you'll use most often in SQL and in data analytics projects.
+
+
+Rename Table:
+                             To rename table use this query:
+                                                                                     RENAME TABLE user  TO programmers;
+                                                                                     RENAME TABLE programmers TO user;
+Then test by Run the programmer table:
+                                                                                   SELECT * FROM programmers;
+
+
+
+ALTER TABLE (in SQL)
+                                                       ALTER TABLE is an SQL command used to change the structure of an existing table.
+In one line:   ALTER TABLE is used to add, modify, rename, or delete columns in an existing table.
+
+Common Uses:
+1. Add a new column
+
+											ALTER TABLE Students
+									                ADD Email VARCHAR(100);
+
+2. Modify a column
+
+											ALTER TABLE Students
+											MODIFY Name VARCHAR(100);
+
+3. Rename a column (syntax depends on the database)
+
+										        ALTER TABLE Students
+											RENAME COLUMN Name TO FullName;
+
+4. Drop (delete) a column
+
+											ALTER TABLE Students
+											DROP COLUMN Email;
+
+5. Use Alter In Table TO Modify columns to change the name and email coloumns
+ 							                             ALTER TABLE user
+	                                                                                              modify COLUMN Email varchar(100) AFTER id;
+                                                                                 select * FRom user;
+
+Easy way to remember:    ALTER TABLE = Change the structure of an existing table.
+
+
+
+
+Insert Data In Table:
+					INSERT INTO user (name, email, gender, date_of_birth)
+					VALUES
+							('Ali Khan', 'ali@gmail.com', 'Male', '2002-05-15'),
+							('Sara Ahmed', 'sara@gmail.com', 'Female', '2001-11-20'),
+							('Usman Tariq', 'usman@gmail.com', 'Male', '2000-08-10'),
+						       ('Ayesha Noor', 'ayesha@gmail.com', 'Female', '2003-02-25'),
+							('Alex', 'alex@gmail.com', 'Other', '2004-07-12');
+
+
+
+
+Use SELECT function: 
+                            Here are the most common SELECT queries you can practice with your user table.
+1. Select all data
+							SELECT * FROM user;
+2. Select specific columns
+							SELECT name, email FROM user;
+3. Select only names
+							SELECT name FROM user;
+4. Select only females
+							SELECT * FROM user
+									WHERE gender = 'Female';
+5. Select only males
+							SELECT * FROM user
+									WHERE gender = 'Male';
+6. Select users born after 2000
+							SELECT * FROM user
+									WHERE date_of_birth > '2000-01-01';
+7. Sort names alphabetically
+							SELECT * FROM user
+									ORDER BY name ASC;
+8. Sort by date of birth (youngest first)
+							SELECT * FROM user
+									ORDER BY date_of_birth DESC;
+9. Display only the first 5 records
+							SELECT * FROM user
+									LIMIT 5;
+10. Find a user by name
+							SELECT * FROM user
+									WHERE name = 'Ali Khan';
+11. Find emails ending with gmail.com
+							SELECT * FROM user
+									WHERE email LIKE '%gmail.com';
+12. Count total users
+							SELECT COUNT(*) AS Total_Users
+									FROM user;
+13. Count male users
+							SELECT COUNT(*) AS Total_Males
+									FROM user
+										WHERE gender = 'Male';
+14. Count female users
+							SELECT COUNT(*) AS Total_Females
+									FROM user
+										WHERE gender = 'Female';
+15. Display unique genders
+							SELECT DISTINCT gender
+									FROM user;
+
+
+
+UPDATE (in SQL)
+                           UPDATE is an SQL command used to modify existing data in a table.
+In one line:   UPDATE is used to change existing records in a table.
+Syntax:
+							UPDATE table_name
+								SET column_name = value
+									WHERE condition;
+
+⚠️ Always use the WHERE clause.
+If you don't use WHERE, all rows in the table will be updated.
+
+Examples using your user table:
+1. Update a user's name
+								UPDATE user
+							             SET name = 'Muhammad Ali'
+										WHERE ID = 1;
+2. Update an email
+								UPDATE user
+									SET email = 'newemail@gmail.com'
+										WHERE ID = 2;
+3. Update gender
+								UPDATE user
+									SET gender = 'Other'
+										WHERE ID = 5;
+4. Update date of birth
+								UPDATE user
+									SET date_of_birth = '2002-12-15'
+										WHERE ID = 3;
+5. Update multiple columns at once
+								UPDATE user
+									SET
+   										 name = 'Ayesha Khan',
+    										email = 'ayesha.khan@gmail.com',
+   										 gender = 'Female'
+								WHERE ID = 4;
+6. Update all users (without WHERE) ⚠️
+							UPDATE user
+								SET gender = 'Male';
+
+This changes the gender of every user to 'Male'.
+Verify the update:
+						SELECT * FROM user;
+
+Remember:
+INSERT → Add new data
+SELECT → View data
+UPDATE → Modify existing data
+DELETE → Remove data
+
+
+
+
+
+DELETE (in SQL)
+                                    DELETE is an SQL command used to remove records (rows) from a table.
+In one line:         DELETE is used to remove existing data from a table.
+Syntax:
+                                                        DELETE FROM table_name
+                                                           WHERE condition;
+
+⚠️ Always use the WHERE clause.
+If you don't use WHERE, all rows in the table will be deleted.
+
+Examples using your user table:
+1. Delete a user by ID
+							DELETE FROM user
+								WHERE ID = 1;
+2. Delete a user by name
+							DELETE FROM user
+								WHERE name = 'Ali Khan';
+3. Delete all female users
+							DELETE FROM user
+								WHERE gender = 'Female';
+4. Delete users born before 2000
+							DELETE FROM user
+							WHERE date_of_birth < '2000-01-01';
+5. Delete all records from the table ⚠️
+							DELETE FROM user;
+
+This removes all rows, but the table structure remains.
+
+Verify the result:
+						SELECT * FROM user;
+
+
+
+Functions in SQL
+An SQL function is a built-in command that performs a specific task on data and returns a result.
+In one line:   A function is used to perform calculations or manipulate data in SQL.
+
+Most Common SQL Functions:
+
+1. COUNT() – Counts rows
+SELECT COUNT(*) FROM user;
+
+2. SUM() – Adds values
+SELECT SUM(salary) FROM employee;
+
+3. AVG() – Finds the average
+SELECT AVG(salary) FROM employee;
+
+4. MAX() – Finds the highest value
+SELECT MAX(salary) FROM employee;
+
+5. MIN() – Finds the lowest value
+SELECT MIN(salary) FROM employee;
+
+6. UPPER() – Converts text to uppercase
+SELECT UPPER(name) FROM user;
+
+7. LOWER() – Converts text to lowercase
+SELECT LOWER(name) FROM user;
+
+8. LENGTH() – Returns the number of characters
+SELECT LENGTH(name) FROM user;
+
+9. NOW() – Returns the current date and time
+SELECT NOW();
+
+10. CURDATE() – Returns the current date
+SELECT CURDATE();
+
+Functions used most in Data Analytics:
+COUNT()
+SUM()
+AVG()
+MAX()
+MIN()
+UPPER()
+LOWER()
+LENGTH()
+NOW()
+CURDATE()
+These are the functions you'll use most often when working with SQL for data analysis.
+
+
+The functions is also called aggregations?
+Not exactly.
+Functions are a broad category. Aggregate functions are a specific type of SQL function.
+
+Simple explanation:
+SQL Functions → Perform operations on data.
+Aggregate Functions → Perform calculations on multiple rows and return one result.
+
+Common Aggregate Functions:
+Function	                                           Purpose
+COUNT()	                             Counts rows
+SUM()	                                    Adds values
+AVG()	                                 Finds the average
+MAX()	                               Finds the highest value
+MIN()	                             Finds the lowest value
+
+Example:
+                    SELECT COUNT(*) FROM user;                                                          Returns the total number of users.
+
+Non-Aggregate (Scalar) Functions:
+These work on one value at a time.
+
+Examples:
+
+UPPER()
+LOWER()
+LENGTH()
+NOW()
+CURDATE()
+
+Example:
+                       SELECT UPPER(name) FROM user;                                              Converts each user's name to uppercase.
+
+Easy way to remember:
+Aggregate Functions = Work on many rows → Return one result.
+Scalar (Normal) Functions = Work on one value → Return one result for each row.
+
+So, all aggregate functions are SQL functions, but not all SQL functions are aggregate functions.
+
+
+
+Examples Are: 
+
+
+select COUNT(*) FROM salary_table;
+
+select COUNT(*) FROM salary_table
+where gender='male';
+
+SELECT MAX(salary) AS MAX_SALARY , MIN(salary) AS MIN_SALARY FROM salary_table;
+
+SELECT SUM(salary) AS Total_Salary from salary_table;
+
+SELECT gender, AVG(salary) AS AVG_Salary from salary_table group by gender;
+
+select name, length(name) AS name_len from salary_table;
+
+In this example use CONCATENATE function to join:
+                 select id, gender, UPPER (Name) AS UPPER_NAME, concat(LOWER(NAME), "5677") AS Username FROM  salary_table;
+
+select name, datediff(Curdate(), date_of_birth) AS days From salary_table;
+
+Select name, gender, 
+if(gender='female', 'yes', 'no') AS Is_Female from salary_table;
+
+
+
+Auto Commit (in SQL)
+
+Auto Commit is a feature in SQL where every SQL statement is automatically saved (committed) after it executes successfully.
+
+In one line:                                 Auto Commit automatically saves every change to the database.
+
+Example:
+							UPDATE user
+								SET salary = 60000
+										WHERE ID = 1;
+
+If Auto Commit is ON, the salary change is saved immediately. You don't need to write:
+
+COMMIT;
+Transaction (in SQL)
+
+A transaction is a group of one or more SQL statements that are executed as a single unit of work.
+
+In one line:
+
+A transaction is a set of SQL operations that are completed together.
+
+Example:
+START TRANSACTION;
+
+UPDATE user
+SET salary = 70000
+WHERE ID = 1;
+
+UPDATE user
+SET salary = 65000
+WHERE ID = 2;
+
+COMMIT;
+
+Both updates are saved together when COMMIT is executed.
+If something goes wrong, you can undo all changes:
+
+ROLLBACK;
+Easy Difference
+Auto Commit                                                   	                  Transaction
+Saves each query automatically.	                            Saves multiple queries together.
+No need to write COMMIT.	                                    Requires COMMIT to save changes.
+Each statement is permanent immediately.	            Changes can be undone with ROLLBACK until committed.
+
+Key Commands
+START TRANSACTION → Begins a transaction.
+COMMIT → Saves all changes permanently.
+ROLLBACK → Cancels all uncommitted changes.
+
+Remember:
+
+Auto Commit = Automatic save after every query.
+Transaction = Manual control over when to save or undo a group of queries.
+
+
+
+Primary Key (in SQL)
+A Primary Key is a column (or a combination of columns) that uniquely identifies each row in a table.
+In one line:      A Primary Key uniquely identifies each record in a table.
+
+Rules of a Primary Key:
+✅ Values must be unique.
+✅ It cannot be NULL.
+✅ A table can have only one Primary Key.
+Example:
+
+CREATE TABLE user (
+    ID INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
+
+Sample Data:
+ID                	Name	          Email
+1	                 Ali	                 ali@gmail.com
+2	                Sara	                  sara@gmail.com
+3	                Hassan	         hassan@gmail.com
+
+Here, ID is the Primary Key because every ID is unique and cannot be empty.
+
+Example of Invalid Data:
+ID | Name
+1  | Ali
+1  | Sara   ❌ Duplicate ID (Not Allowed)
+ID | Name
+NULL | Ali  ❌ NULL value (Not Allowed)
+
+Easy way to remember:
+Primary Key = A unique ID for every record in a table.
+
+
+
+
+Difference Between PRIMARY KEY and UNIQUE
+PRIMARY KEY	                                                                                           UNIQUE
+Uniquely identifies each row in a table.	                                             Ensures all values in a column are unique.
+Cannot be NULL.	                                                                            Can contain NULL (in most SQL databases, including MySQL).
+Only one Primary Key is allowed per table.                                     	A table can have multiple UNIQUE constraints.
+Values must be unique.                                                                             	Values must also be unique.
+
+Easy way to remember:
+PRIMARY KEY = Unique + Not NULL + Only one per table.
+UNIQUE = Unique values, can have NULL (in MySQL), and you can have multiple UNIQUE columns.
+
+
+
+
+Foreign Key (in SQL)
+A Foreign Key is a column that links one table to another.
+
+In one line: A Foreign Key creates a relationship between two tables.
+
+Why do we use it?
+To connect related tables.
+To maintain referential integrity (you can't reference data that doesn't exist).
+
+Example:
+Students Table (Parent Table)
+											CREATE TABLE Students (
+    												StudentID INT PRIMARY KEY,
+    														Name VARCHAR(100)
+														);
+Courses Table (Child Table)
+										CREATE TABLE Courses (
+    											CourseID INT PRIMARY KEY,
+    												StudentID INT,
+   												 CourseName VARCHAR(100),
+    												FOREIGN KEY (StudentID) REFERENCES Students(StudentID)
+												);
+Sample Data
+
+Students
+
+StudentID	 						Name
+1	                                                                 Ali
+2	                                                               Sara
+
+Courses
+
+CourseID	                                             StudentID	                                     CourseName
+101	                                                           1                                                     	SQL
+102	                                                            2	                                                     Python
+
+Here, StudentID in the Courses table is a Foreign Key because it refers to the StudentID (Primary Key) in the Students table.
+
+What happens if you try this?
+INSERT INTO Courses (CourseID, StudentID, CourseName)
+VALUES (103, 5, 'Power BI');
+
+❌ Error: StudentID = 5 doesn't exist in the Students table, so the insert is not allowed.
+
+Easy way to remember:
+Primary Key = Uniquely identifies a row in its own table.
+Foreign Key = Refers to the Primary Key of another table to create a relationship.
+
+Example: One student can enroll in many courses, so StudentID is the link between the two tables.
+
+
+
+
+Example foreign table: 
+
+DROP TABLE IF EXISTS addresses;
+
+CREATE TABLE addresses (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    USER_ID INT,
+    STREET VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(100),
+    pincode VARCHAR(10),
+    CONSTRAINT fk_user
+        FOREIGN KEY (USER_ID)
+        REFERENCES user(ID) ON DELETE cascade
+);
+
+
+
+
+
+CASCADE (in SQL)
+CASCADE means when a change happens in the parent table, the same change automatically happens in the related child table.
+In one line:    CASCADE automatically applies changes from the parent table to the child table.
+
+There are two common types:
+
+1. ON DELETE CASCADE
+
+If a record is deleted from the parent table, all related records in the child table are also deleted automatically.
+
+Example:
+
+User Table
+
+ID	                  Name
+1	                    Ali
+
+Addresses Table
+
+ID	                           USER_ID	                            City
+1	                                  1	                                   Lahore
+
+If you run:
+DELETE FROM user
+WHERE ID = 1;
+Then the address with USER_ID = 1 is also deleted automatically.
+
+2. ON UPDATE CASCADE
+
+If the Primary Key in the parent table changes, the Foreign Key in the child table is updated automatically.
+
+Example:
+If user.ID changes from 1 to 10, then:
+
+Before
+USER_ID = 1
+
+After
+USER_ID = 10
+
+How to use it:
+CONSTRAINT fk_user
+FOREIGN KEY (USER_ID)
+REFERENCES user(ID)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+Easy way to remember:
+ON DELETE CASCADE → Delete the parent ➜ related child records are deleted too.
+ON UPDATE CASCADE → Update the parent key ➜ related child keys are updated too.
+
+Think of it like this:
+User = Parent 👨
+Address = Child 🏠
+
+If the parent is removed, the child's related record is also removed. If the parent's ID changes, the child's linked ID changes automatically.
+
+
+
+Joins in SQL
+SQL Joins are used to combine data from two or more tables based on a related column (usually a Primary Key and Foreign Key).
+
+In one line:   A JOIN combines related data from multiple tables into one result.
+
+Example Tables
+user
+
+ID	Name
+1	Ali
+2	Sara
+3	Hassan
+
+addresses
+
+USER_ID	City
+1	            Lahore
+2	            Karachi
+4	           Islamabad
+
+
+1. INNER JOIN
+Returns only matching records from both tables.
+
+SELECT user.name, addresses.city
+FROM user
+INNER JOIN addresses
+ON user.ID = addresses.USER_ID;
+
+Result:
+Name	              City
+Ali                    	Lahore
+Sara	                       Karachi
+
+
+
+2. LEFT JOIN
+Returns all records from the left table (user) and matching records from the right table.
+
+SELECT user.name, addresses.city
+FROM user
+LEFT JOIN addresses
+ON user.ID = addresses.USER_ID;
+
+Result:
+Name           	City
+Ali	             Lahore
+Sara        	    Karachi
+Hassan	    NULL
+
+
+
+3. RIGHT JOIN
+Returns all records from the right table (addresses) and matching records from the left table.
+
+SELECT user.name, addresses.city
+FROM user
+RIGHT JOIN addresses
+ON user.ID = addresses.USER_ID;
+
+Result:
+Name	                City
+Ali	                        Lahore
+Sara	                    Karachi
+NULL      	Islamabad
+
+
+
+
+4. FULL OUTER JOIN
+Returns all records from both tables. If there is no match, the missing side is shown as NULL.
+
+Note:
+           "MySQL does not support FULL OUTER JOIN directly. You can achieve it using LEFT JOIN + RIGHT JOIN with UNION."
+
+
+
+Easy way to remember:
+
+INNER JOIN → Only matching records.
+LEFT JOIN → All rows from the left table + matching rows from the right.
+RIGHT JOIN → All rows from the right table + matching rows from the left.
+FULL OUTER JOIN → All rows from both tables.
+
+Most commonly used in SQL:
+
+✅ INNER JOIN (Most common)
+✅ LEFT JOIN (Very common)
+RIGHT JOIN (Less common)
+FULL OUTER JOIN (Not directly supported in MySQL)
+
+
+
+
+
+UNION in SQL
+UNION is used to combine the results of two or more SELECT queries into one result.
+
+In one line:          UNION combines the results of multiple SELECT statements and removes duplicate rows.
+
+Syntax:
+
+SELECT column1, column2
+FROM table1
+
+UNION
+
+SELECT column1, column2
+FROM table2;
+
+Example
+Suppose you have two tables:
+
+user
+ID	Name
+1	Ali
+2	Sara
+
+admin_users
+ID	Name
+3	Hassan
+4	Ayesha
+
+Query:
+
+SELECT name FROM user
+UNION
+SELECT name FROM admin_users;
+
+Result:
+Name
+Ali
+Sara
+Hassan
+Ayesha
+
+Example also write as to verify which table is used: 
+                   
+
+SELECT ID, name, email, 'USER' AS Role FROM user
+UNION
+SELECT ID, name,email, 'ADMIN' AS Role FROM admin_users;
+
+
+
+
+
+UNION vs UNION ALL
+
+1. UNION
+Combines results.
+Removes duplicate rows.
+
+Example:
+SELECT name FROM user
+UNION
+SELECT name FROM admin_users;
+
+If Ali exists in both tables, it appears only once.
+
+2. UNION ALL
+Combines results.
+Keeps duplicate rows.
+
+Example:
+SELECT name FROM user
+UNION ALL
+SELECT name FROM admin_users;
+
+If Ali exists in both tables, it appears twice.
+
+
+Rules for using UNION:
+
+Both SELECT statements must have the same number of columns.
+The columns must have compatible data types.
+The column names don't have to be the same, but the order must match.
+
+
+Easy way to remember:
+UNION = Combine results without duplicates.
+UNION ALL = Combine results with duplicates.
+
+Example:
+SELECT name, email FROM user
+UNION
+SELECT name, email FROM admin_users;
+
+This returns all users and admins together in one result while removing any duplicate rows.
+
+
+Easy way to remember the 5 rules of UNION:
+✅ Same number of columns.
+✅ Compatible data types.
+✅ Same column order.
+✅ UNION removes duplicates (UNION ALL keeps them).
+✅ ORDER BY is written only once, at the end.
+
+
+
+
+
+
+Cross Category Reporting
+Cross Category Reporting means analyzing and comparing data across different categories in a single report.
+
+In one line:         Cross Category Reporting compares data from multiple categories to find insights.
+
+Example:
+Suppose you have sales data:
+
+Category	                                             Sales
+Electronics	                                   100,000
+Clothing                          	           75,000
+Furniture	                                           50,000
+
+A cross-category report lets you compare the sales of Electronics, Clothing, and Furniture in one report.
+
+Example SQL Query:
+
+SELECT category, SUM(sales) AS total_sales
+FROM products
+GROUP BY category;
+
+
+Why do we use it?
+
+Compare the performance of different categories.
+Identify the best- and worst-performing categories.
+Support business decisions.
+
+Real-life Example:
+A supermarket wants to compare the monthly sales of:
+
+Electronics
+Groceries
+Clothing
+
+Instead of creating three separate reports, it creates one report that compares all three categories.
+
+
+
+
+
+Self Join (in SQL)
+A Self Join is a join where a table is joined with itself.
+
+In one line:    A Self Join joins a table to itself to compare or relate rows within the same table.
+
+Why do we use it?
+We use a Self Join when related information is stored in the same table.
+
+Example
+
+Employees Table:
+EmployeeID		Name		ManagerID
+1				Ali			NULL
+2				Sara			1
+3				Hassan		1
+4				Ayesha		2
+
+Here:
+Ali is the manager of Sara and Hassan.
+Sara is the manager of Ayesha.
+
+To display each employee along with their manager's name:
+
+SELECT
+    e.Name AS Employee,
+    m.Name AS Manager
+FROM employee e
+LEFT JOIN employee m
+ON e.ManagerID = m.EmployeeID;
+
+Result:
+Employee				Manager
+Ali					NULL
+Sara					Ali
+Hassan				Ali
+Ayesha				Sara
+
+Explanation:
+e = Employee table (first copy)
+m = Manager table (second copy of the same table)
+
+Even though it's the same table, we give it different aliases (e and m) so SQL can distinguish between them.
+
+Easy way to remember:
+INNER JOIN → Joins two different tables.
+SELF JOIN → Joins the same table with itself.
+
+=Common Uses:
+Employee and Manager relationships.
+Parent and Child relationships.
+Mentor and Student relationships.
+Friend or Referral relationships.
+
+Memory Tip:
+Self Join = "One table talking to itself."
+
+
+
+
+VIEWS (IN SQL)
+A View is a virtual table created from the result of a SELECT query.
+
+In one line:  A View is a saved SQL query that behaves like a table.
+
+--> View can update data automatically when you can change data from the orginal table the data also updated on view.
+
+Why do we use a View?
+
+1) Save complex queries.
+2) Reuse the same query multiple times.
+3) Hide sensitive columns (like salary or password).
+4) Simplify data access.
+
+Syntax:
+
+Create a View
+CREATE VIEW view_name AS
+SELECT column1, column2
+FROM table_name;
+
+Example
+Suppose your user table contains:
+
+ID			Name			Email				Salary
+1			Ali				ali@gmail.com	        60000
+2			Sara				sara@gmail.com		55000
+
+Create a view:
+
+CREATE VIEW user_details AS
+SELECT ID, Name, Email
+FROM user;
+
+Now instead of writing:
+
+SELECT ID, Name, Email
+FROM user;
+
+every time, you can simply write:
+
+SELECT * FROM user_details;
+
+Result
+ID			Name			Email
+1			Ali				ali@gmail.com
+2			Sara				sara@gmail.com
+
+Notice that Salary is hidden because it wasn't included in the view.
+
+Useful Commands:
+
+See data from a view:
+
+SELECT * FROM user_details;
+
+Delete a view:
+
+DROP VIEW user_details;
+
+
+Easy way to remember:
+
+Table → Stores actual data.
+View → Does not store data itself; it displays data from one or more tables based on a saved query.
+
+Real-life example:
+
+Imagine you work in HR. Employees have access to names and emails, but not salaries.
+Instead of giving them access to the whole user table, you create a view that only shows:
+1) Name
+2) Email
+
+This way, employees can see only the information they need, while salary remains hidden.
+
+
+
+
+
+Indexes in SQL
+An Index is used to make data searching faster in a table.
+
+In one line:   An Index helps SQL find data quickly without scanning the entire table.
+
+Why do we use an Index?
+✅ Speed up SELECT queries.
+✅ Improve search performance.
+❌ Slightly slows down INSERT, UPDATE, and DELETE because the index also needs to be updated.
+
+Example
+Suppose your user table has 1,000,000 rows.
+
+Without an index:
+
+SELECT * FROM user
+WHERE email = 'ali@gmail.com';
+
+MySQL may check many rows to find the email.
+
+With an index on email, MySQL can locate the matching row much faster.
+
+Create an Index
+CREATE INDEX idx_email
+ON user(email);
+
+Here:
+
+idx_email = Index name.
+email = Column being indexed.
+
+Remove an Index
+
+DROP INDEX idx_email
+ON user;
+
+When should you create an Index?
+Create indexes on columns that are:
+1) Frequently used in WHERE.
+2) Frequently used in JOIN.
+3) Frequently used in ORDER BY.
+4) Frequently used in GROUP BY.
+
+Example:
+
+SELECT * FROM user
+WHERE email = 'ali@gmail.com';
+
+Since email is searched often, it's a good candidate for an index.
+
+Easy Example
+Imagine a book with 500 pages.
+
+Without an index: You flip through pages one by one to find "SQL".
+With an index: You check the index at the back of the book, find the page number, and go directly there.
+
+📖 Database Index works the same way—it helps the database find data much faster.
+
+Easy way to remember:
+Index = Faster searching.
+No Index = Slower searching because SQL may scan the whole table.
+
+
+
+
+Example: 
+-- INDEXES:
+
+-- TO SHOW INDEXES FROM THE TABLE USE THIS QUERY:
+
+SHOW indexes from user;
+
+-- TO CREATE  INDEXES FROM THE TABLE USE THIS QUERY:
+
+CREATE INDEX idx_gender ON USER(GENDER);
+
+SELECT * FROM user WHERE EMAIL="sara@gmail.com" AND GENDER="FEMALE";
+
+-- MULTI-INDEX QUERY: 
+
+CREATE INDEX its_gender_salary ON salary_table(gender,salary);
+SHOW indexes from salary_table;
+
+
+SELECT * FROM salary_table WHERE gender = "FEMALE" AND salary> 40000;
+
+-- TO DROP INDEX USE THIS QUERY:
+DROP INDEX idx_gender on user;
+
+
+
+
+
+SUBQUERIES IN SQL:
+A Subquery is a query written inside another SQL query.
+
+In one line:   A Subquery is a query inside another query.
+
+Why do we use Subqueries?
+- Get data based on another query's result.
+- Make complex queries easier.
+- Filter, compare, or calculate values.
+
+Basic Syntax:
+SELECT column_name
+FROM table_name
+WHERE column_name = (
+    SELECT column_name
+    FROM table_name
+);
+Example 1: Find the employee with the highest salary
+
+Suppose your user table is:
+
+ID			Name			Salary
+1			Ali				50000
+2			Sara				70000
+3			Hassan			60000
+
+Query:
+
+SELECT name, salary
+FROM user
+WHERE salary = (
+    SELECT MAX(salary)
+    FROM user
+);
+
+Result
+Name			Salary
+Sara				70000
+
+Explanation:
+
+Inner query:
+
+SELECT MAX(salary) FROM user;
+
+returns 70000.
+
+Outer query:
+
+SELECT name, salary
+FROM user
+WHERE salary = 70000;
+
+returns Sara.
+
+Example 2: Find users earning more than the average salary
+
+SELECT name, salary
+FROM user
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM user
+);
+
+If the average salary is 60000, the query returns everyone earning more than 60000.
+
+Example 3: Using IN
+
+SELECT name
+FROM user
+WHERE id IN (
+    SELECT user_id
+    FROM addresses
+);
+
+This returns the names of users who have an address in the addresses table.
+
+--TYPES OF SUBQUIRES:
+1. Single-row Subquery:
+                           Returns one value.
+Example:
+
+SELECT *
+FROM user
+WHERE salary = (
+    SELECT MAX(salary)
+    FROM user
+);
+
+2. Multiple-row Subquery:
+                                 Returns multiple values.
+Example:
+
+SELECT *
+FROM user
+WHERE id IN (
+    SELECT user_id
+    FROM addresses
+);
+
+3. Correlated Subquery:
+                              The inner query depends on the outer query and runs once for each row.
+Example:
+
+SELECT u1.name, u1.salary
+FROM user u1
+WHERE salary > (
+    SELECT AVG(u2.salary)
+    FROM user u2
+    WHERE u2.gender = u1.gender
+);
+
+Easy way to remember
+Query = One SQL statement.
+Subquery = A query inside another query.
+
+Real-life example
+Imagine you're asking:
+
+"Show me the employee who has the highest salary."
+
+Instead of first finding the highest salary yourself, SQL does it automatically:
+
+Inner query → Finds the highest salary.
+Outer query → Finds the employee with that salary.
+
+So:
+
+Outer Query = Main query.
+Subquery = Helper query that provides data to the main query.
+
+
+
+MORE EXAMPLES:
+-- SUBQUERIES IN SQL:
+
+-- 1ST CHECK AVG SALARY:
+Select AVG(SALARY) 
+	FROM SALARY_TABLE;
+
+-- SUBQERY:
+-- WE WANT TO FIND USER WHO EARN MORE THAN THE AVG SALARY?
+SELECT 
+	id,name,salary 
+FROM salary_table
+WHERE salary> (
+		Select AVG(SALARY) 
+	FROM SALARY_TABLE
+    );
+
+
+-- USING IN:
+SELECT 
+	ID, name
+FROM USER
+WHERE ID IN (
+		SELECT USER_ID 
+	FROM ADDRESSES
+);
+
+-- WE WANT TO FIND USERS WHO HAVE BEEN REFEERED BY SOMEONE WHO EARNS MORE THAN 40000? 
+
+SELECT 
+	ID,NAME,REFERRED_BY_ID
+FROM USER
+WHERE REFERRED_BY_ID IN (
+        SELECT 
+			ID 
+		FROM salary_table
+        WHERE salary> 40000
+	);
+
+
+
+GROUP BY in SQL
+                                    GROUP BY is used to group rows that have the same value in a column and then perform calculations (aggregations) like COUNT(), SUM(), AVG(), MAX(), or MIN() on each group.
+
+In one line: GROUP BY groups similar rows together so you can calculate values for each group.
+
+Example Table: user
+ID				Gender			Salary
+1				MALE			50000
+2				FEMALE			60000
+3				MALE			55000
+4				FEMALE			65000
+5				OTHER			45000
+
+Example 1: Count users by gender
+
+SELECT gender, COUNT(*) AS total_users
+FROM user
+GROUP BY gender;
+
+Result
+Gender			Total Users
+MALE				2
+FEMALE				2
+OTHER				1
+
+Example 2: Average salary by gender
+
+SELECT gender, AVG(salary) AS average_salary
+FROM user
+GROUP BY gender;
+
+Result
+Gender			Average Salary
+MALE				52500
+FEMALE				62500
+OTHER				45000
+
+Example 3: Total salary by gender
+
+SELECT gender, SUM(salary) AS total_salary
+FROM user
+GROUP BY gender;
+
+Why do we use GROUP BY?
+Count records in each category.
+Find total salary for each department or gender.
+Calculate average sales for each product.
+Find maximum or minimum values for each group.
+
+Rules of GROUP BY
+Every non-aggregated column in SELECT must appear in GROUP BY.
+
+✅ Correct:
+
+SELECT gender, COUNT(*)
+FROM user
+GROUP BY gender;
+
+❌ Incorrect:
+
+SELECT name, gender, COUNT(*)
+FROM user
+GROUP BY gender;
+
+(name is neither grouped nor aggregated.)
+
+GROUP BY is usually used with aggregate functions such as:
+COUNT()
+SUM()
+AVG()
+MAX()
+MIN()
+
+Easy way to remember
+Imagine a classroom with students grouped by section:
+
+Section A → 30 students
+Section B → 25 students
+Section C → 20 students
+
+GROUP BY first makes the groups (A, B, C), then COUNT() counts the students in each group.
+
+Memory Tip:
+
+GROUP BY = Make groups.
+Aggregate functions = Perform calculations on each group.
+
+
+
+-- GROUP BY 
+
+SELECT GENDER, AVG(SALARY) AS AVG_SALARY
+FROM salary_table
+group by GENDER;
+
+
+SELECT REFERRED_BY_ID , COUNT(REFERRED_BY_ID) AS TOTAL_REFERRED
+FROM USER
+WHERE REFERRED_BY_ID IS NOT NULL
+GROUP BY REFERRED_BY_ID;
+
+
+
+
+
+
+HAVING in SQL:
+HAVING is used to filter grouped data after using GROUP BY.
+
+In one line:  HAVING filters groups, while WHERE filters rows.
+
+Syntax:
+
+SELECT column_name, aggregate_function(column_name)
+FROM table_name
+GROUP BY column_name
+HAVING condition;
+
+Example 1: Show genders with more than 2 users
+Suppose the user table contains:
+
+ID	Gender
+1	MALE
+2	MALE
+3	FEMALE
+4	FEMALE
+5	FEMALE
+
+Query:
+
+SELECT gender, COUNT(*) AS total_users
+FROM user
+GROUP BY gender
+HAVING COUNT(*) > 2;
+
+Result
+Gender		Total Users
+FEMALE			3
+
+Example 2: Show genders whose average salary is greater than 60,000
+
+SELECT gender, AVG(salary) AS average_salary
+FROM user
+GROUP BY gender
+HAVING AVG(salary) > 60000;
+
+
+WHERE vs HAVING
+WHERE															HAVING
+Filters rows before grouping.										- Filters groups after grouping.
+Cannot use aggregate functions like COUNT() or AVG().					- Can use aggregate functions.
+Used before GROUP BY.											- Used after GROUP BY.
+
+Example using WHERE:
+
+SELECT *
+FROM user
+WHERE salary > 50000;
+
+This filters individual users.
+
+Example using HAVING
+
+SELECT gender, COUNT(*) AS total_users
+FROM user
+GROUP BY gender
+HAVING COUNT(*) > 2;
+
+This filters groups.
+
+Easy way to remember
+WHERE = Filter rows.
+GROUP BY = Make groups.
+HAVING = Filter those groups.
+
+Memory Tip
+Think of it as a 3-step process:
+
+WHERE → Select the rows you need.
+GROUP BY → Group similar rows together.
+HAVING → Keep only the groups that meet a condition.
+
+
+
+
+
+
+
+ROLLUP in SQL
+               ROLLUP is used with GROUP BY to add subtotal and grand total rows to your results automatically.
+
+In one line:  ROLLUP creates subtotals and a grand total for grouped data.
+
+Why do we use ROLLUP?
+
+We use ROLLUP when we want:
+✅ Subtotals for each group.
+✅ A grand total at the end.
+✅ Summary reports without writing extra queries.
+
+
+
+Example Table: user
+ID		Gender			Salary
+1		MALE			50000
+2		MALE			60000
+3		FEMALE			70000
+4		FEMALE			80000
+
+Without ROLLUP
+
+SELECT gender, SUM(salary) AS total_salary
+FROM user
+GROUP BY gender;
+
+Result
+Gender						Total Salary
+FEMALE						150000
+MALE						110000
+
+With ROLLUP
+
+SELECT gender, SUM(salary) AS total_salary
+FROM user
+GROUP BY gender WITH ROLLUP;
+
+Result
+Gender				Total Salary
+FEMALE				150000
+MALE				110000
+NULL				260000
+
+👉 The last row (NULL) is the Grand Total.
+
+Another Example
+Suppose you have a sales table:
+
+Category					Sales
+Electronics				50000
+Electronics				30000
+Clothing					20000
+Clothing					40000
+
+Query:
+
+SELECT category, SUM(sales) AS total_sales
+FROM sales
+GROUP BY category WITH ROLLUP;
+
+Result
+Category				Total Sales
+Clothing				60000
+Electronics			80000
+NULL				140000
+
+Here:
+Clothing = Subtotal
+Electronics = Subtotal
+NULL = Grand Total
+
+Easy way to remember
+GROUP BY → Creates groups.
+ROLLUP → Adds totals for those groups and an overall total.
+
+Memory Tip
+Think of a school result sheet:
+
+Class	Students
+Class A	30
+Class B	25
+Total	55
+
+ROLLUP automatically creates the "Total" row for you.
+
+Formula to remember:
+GROUP BY = Group data
+GROUP BY ... WITH ROLLUP = Group data + Subtotals + Grand Total
+
+
+-- USING ROLLUP WITH GROUP BY;
+SELECT GENDER, AVG(SALARY) AS AVG_SALARY
+FROM salary_table
+group by GENDER WITH ROLLUP;
+
+
+
+
+
+SELECT REFERRED_BY_ID , COUNT(REFERRED_BY_ID) AS TOTAL_REFERRED
+FROM USER
+WHERE REFERRED_BY_ID IS NOT NULL
+GROUP BY REFERRED_BY_ID;
+
+
+-- USING HAVING:
+
+SELECT 
+	GENDER AS 'GENDER', AVG(salary) AS 'AVG-SALARY', count(*) AS COUNT
+FROM salary_table
+GROUP BY GENDER
+HAVING AVG(SALARY)>40000;
+
+
+
+SELECT REFERRED_BY_ID , COUNT(REFERRED_BY_ID) AS TOTAL_REFERRED
+FROM USER
+WHERE REFERRED_BY_ID IS NOT NULL
+GROUP BY REFERRED_BY_ID 
+HAVING count(*)> 1;
+
+
+
+
+
+
+
+
+STORED PROCEDUCER IN  SQL:
+                                A Stored Procedure is a saved collection of SQL statements that you can execute whenever you need.
+
+In one line:    A Stored Procedure is a saved SQL program that performs one or more tasks.
+
+Why do we use Stored Procedures?
+✅ Reuse SQL code.
+✅ Avoid writing the same query again and again.
+✅ Improve performance.
+✅ Make database operations easier to manage.
+
+Syntax:
+
+DELIMITER //
+
+CREATE PROCEDURE procedure_name()
+BEGIN
+    SQL statements;
+END //
+DELIMITER ;
+
+Example 1: Show all users
+
+DELIMITER //
+
+CREATE PROCEDURE GetAllUsers()
+BEGIN
+    SELECT * FROM user;
+END //
+
+DELIMITER ;
+
+Execute the procedure
+
+CALL GetAllUsers();
+
+This displays all records from the user table.
+
+Example 2: Show only male users
+
+DELIMITER //
+
+CREATE PROCEDURE GetMaleUsers()
+BEGIN
+    SELECT *
+    FROM user
+    WHERE gender = 'MALE';
+END //
+
+DELIMITER ;
+
+Run it:
+
+CALL GetMaleUsers();
+
+Example 3: Procedure with a parameter
+
+DELIMITER //
+
+CREATE PROCEDURE GetUserByID(IN user_id INT)
+BEGIN
+    SELECT *
+    FROM user
+    WHERE ID = user_id;
+END //
+
+DELIMITER ;
+
+Call it:
+
+CALL GetUserByID(3);
+
+This returns the user whose ID is 3.
+
+Delete a Stored Procedure
+
+DROP PROCEDURE GetAllUsers;
+
+Easy way to remember
+Function = Returns a single value (e.g., SUM(), AVG(), MAX()).
+Stored Procedure = Executes one or more SQL statements and can return result sets.
+
+Real-life example
+Imagine you frequently run this query:
+
+SELECT * FROM user WHERE gender = 'MALE';
+
+Instead of typing it every time, save it as a Stored Procedure:
+
+CALL GetMaleUsers();
+
+This runs the saved SQL instantly.
+
+Memory Tip
+Query = Used once.
+View = Saved SELECT query.
+Stored Procedure = Saved SQL program that you can execute using CALL.
+
+
+
+
+
+
+
+TRIGGERS IN  SQL:
+                   A Trigger is a special SQL program that runs automatically when an event happens on a table.
+
+In one line:   A Trigger automatically executes when data is inserted, updated, or deleted.
+
+Why do we use Triggers?
+✅ Automatically perform actions.
+✅ Keep data consistent.
+✅ Create audit logs.
+✅ Validate or modify data automatically.
+
+When does a Trigger run?
+A trigger can run when:
+INSERT → A new row is added.
+UPDATE → An existing row is changed.
+DELETE → A row is removed.
+
+It can also run:
+BEFORE the event.
+AFTER the event.
+
+Syntax:  
+
+CREATE TRIGGER trigger_name
+BEFORE | AFTER INSERT | UPDATE | DELETE
+ON table_name
+FOR EACH ROW
+BEGIN
+    SQL statements;
+END;
+
+Example 1: BEFORE INSERT Trigger
+Suppose you don't want a salary less than 20,000.
+
+DELIMITER //
+
+CREATE TRIGGER check_salary
+BEFORE INSERT
+ON user
+FOR EACH ROW
+BEGIN
+    IF NEW.salary < 20000 THEN
+        SET NEW.salary = 20000;
+    END IF;
+END //
+
+DELIMITER ;
+
+What happens?
+If you insert:
+INSERT INTO user(name, salary)
+VALUES ('Ali', 15000);
+
+The trigger automatically changes the salary to:
+
+20000
+
+before saving it.
+
+Example 2: AFTER DELETE Trigger
+Suppose you want to record every deleted user.
+
+CREATE TABLE deleted_users (
+    id INT,
+    name VARCHAR(100)
+);
+
+Create the trigger:
+
+DELIMITER //
+
+CREATE TRIGGER save_deleted_user
+AFTER DELETE
+ON user
+FOR EACH ROW
+BEGIN
+    INSERT INTO deleted_users(id, name)
+    VALUES (OLD.id, OLD.name);
+END //
+
+DELIMITER ;
+
+If you delete:
+DELETE FROM user
+WHERE id = 3;
+
+The deleted user's data is automatically copied into the deleted_users table.
+
+NEW vs OLD
+NEW → Refers to the new values in an INSERT or UPDATE.
+OLD → Refers to the old values in an UPDATE or DELETE.
+
+TYPES OF TRIGGERS:
+BEFORE INSERT
+AFTER INSERT
+BEFORE UPDATE
+AFTER UPDATE
+BEFORE DELETE
+AFTER DELETE
+
+Easy way to remember
+Imagine a shopping website.
+A customer places an order (INSERT).
+A trigger automatically updates the inventory.
+No one has to run another SQL query manually.
+
+Memory Tip
+Stored Procedure → You run it manually using CALL.
+Trigger → SQL runs it automatically when an INSERT, UPDATE, or DELETE happens.
+
+Simple Formula:
+Stored Procedure = Manual execution
+Trigger = Automatic execution
+
+
+
+
+
+Wildcard Operators in SQL
+
+Wildcard operators are special characters used with the LIKE operator to search for patterns in text.
+
+In one line: Wildcards help you search for partial text instead of exact matches.
+
+Why do we use Wildcards?
+Search names starting with a letter.
+Search names ending with a letter.
+Search text containing a word or character.
+
+1. % (Percent)
+Meaning: Matches zero, one, or many characters.
+
+Example 1: Names starting with "A"
+
+SELECT *
+FROM user
+WHERE name LIKE 'A%';
+
+Result:
+Ali
+Ayesha
+Abdullah
+
+Example 2: Names ending with "a"
+
+SELECT *
+FROM user
+WHERE name LIKE '%a';
+
+Result:
+Sara
+Hira
+Zainab
+
+Example 3: Names containing "an"
+
+SELECT *
+FROM user
+WHERE name LIKE '%an%';
+
+Result:
+Hassan
+Daniyal
+Anaya
+
+2. _ (Underscore)
+Meaning: Matches exactly one character.
+
+Example 1:
+
+SELECT *
+FROM user
+WHERE name LIKE '_li';
+
+Result:
+Ali
+
+The _ matches exactly one character before li.
+
+Example 2:
+SELECT *
+FROM user
+WHERE name LIKE 'S_ra';
+
+Result:
+
+Sara
+
+The _ matches the single character a.
+
+Difference Between % and _
+Wildcard	Meaning
+%	Matches 0 or more characters
+_	Matches exactly 1 character
+Easy Examples
+
+Assume these names:
+
+Ali
+Ayesha
+Hassan
+Sara
+SELECT * FROM user WHERE name LIKE 'A%';
+
+✅ Starts with A
+
+SELECT * FROM user WHERE name LIKE '%a';
+
+✅ Ends with a
+
+SELECT * FROM user WHERE name LIKE '%ss%';
+
+✅ Contains ss
+
+SELECT * FROM user WHERE name LIKE '_li';
+
+✅ Three-letter names ending in li (e.g., Ali)
+
+Easy way to remember
+% = Many characters (or none)
+_ = One character only
+Memory Tip
+
+Think of it like this:
+
+% = "Anything can come here."
+_ = "Only one character can come here."
+
+
+
+Quick Revision Table:
+Keyword	                                                                         Purpose
+DISTINCT	                                                         Show unique values only.
+TRUNCATE	                                                         Remove all rows, keep the table.
+OFFSET	                                                                 Skip a number of rows.
+LIMIT	                                                                 Return only a specified number of rows.
+ORDER BY	                                                          Sort the result.
+AS	                                                                          Rename a column or table temporarily.
+IN	                                                                          Check if a value is in a list.
+BETWEEN	                                                          Filter values within a range.
+IS NULL	                                                                   Find NULL values.
+EXISTS	                                                                    Check if a subquery returns rows.
+
